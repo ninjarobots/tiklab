@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
+
+if [ ! -f "chr-images/unpacked" ]; then
+  for file in $(ls chr-images | grep zip); do 
+    unzip -d chr-images chr-images/$file
+    touch chr-images/unpacked
+  done
+fi
+
 BASE="./lab"
 IMG_DIR="./chr-images"
 DISK_DIR="$BASE/disks"
